@@ -81,7 +81,7 @@ generate_semisynthetic_dataset <- function(p = 1000, s = 10,
   }
 
   # beta vector
-  beta <- rep(0, ncol(subdata))
+  beta <- rep(0, ncol(X))
   beta[non_zero_indices] <- 1
   
   sigma <- sqrt( (t(beta) %*% corr_X %*% beta) / snr )

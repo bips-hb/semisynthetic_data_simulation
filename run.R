@@ -42,18 +42,18 @@ addProblem(name = "synthetic_sim", fun = simulator_wrapper, seed = 1)
 ### add algorithms 
 addAlgorithm(name = "fs", fun = fs_wrapper) 
 addAlgorithm(name = "bs", fun = bs_wrapper) 
-addAlgorithm(name = "enet", fun = enet_wrapper) 
+#addAlgorithm(name = "enet", fun = enet_wrapper) 
 
 ### add the experiments
 
 # parameters for the simulation
-prob_design <- list(sim_data = sim_param)
+prob_design <- list(synthetic_sim = sim_param)
 
 # parameters for the methods
 algo_design <- list(
   bs = expand.grid(k = 15),
-  fs = expand.grid(k = 15), 
-  enet = expand.grid(alpha = seq(.1, 1, by = .1))
+  fs = expand.grid(k = 15)#, 
+#  enet = expand.grid(alpha = seq(.1, 1, by = .1))
 )
 
 addExperiments(prob_design, algo_design, repls = repls)

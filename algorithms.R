@@ -20,7 +20,7 @@ bs_wrapper <- function(data, job, instance, ...) {
   
   range <- 1:ap$k
   fit <- bestsubset::bs(instance$X, instance$y, k = range, intercept = FALSE, 
-                        time.limit = 10*60)
+                        time.limit = 5)#10*60)
   # return list. each entry is for a different k, e.g., 0:20 
   # each entry contains the variables that were select for that 
   # k 
