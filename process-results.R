@@ -1,14 +1,7 @@
-process_results <- function(res, p, method = 'fs', alpha = NULL, beta_type = 'first', s = 10) { 
+process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors) { 
   
   if (method == 'enet' & is.null(alpha)) { 
     stop("alpha should be given when method is enet") 
-  }
-  
-  # determine what the true predictors are (beta coefficient != 0)
-  if (beta_type == "first") { 
-    true_predictors <- 1:s
-  } else { 
-    true_predictors <- seq(1, s*s, by = s) 
   }
   
   false_predictors <- setdiff(1:p, true_predictors)
