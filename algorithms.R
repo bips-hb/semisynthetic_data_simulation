@@ -8,7 +8,7 @@ fs_wrapper <- function(data, job, instance, ...) {
     id = res$action
   )
   
-  res <- process_results(output, pp$p, method = "fs", alpha = NULL, instance$true_predictors)
+  res <- process_results(output, pp$p, method = "fs", alpha = NULL, instance$true_predictors, pp$s)
   res$job.id <- job$job.id
   res
 }
@@ -26,7 +26,7 @@ bs_wrapper <- function(data, job, instance, ...) {
   # k 
   output <- apply(fit$beta, 2, function(x) which(x != 0))
   
-  res <- process_results(output, pp$p, method = "bs", alpha = NULL, instance$true_predictors)
+  res <- process_results(output, pp$p, method = "bs", alpha = NULL, instance$true_predictors, pp$s)
   res$job.id <- job$job.id
   res$finished[1:length(fit$status)] <- fit$status
   res
@@ -68,7 +68,7 @@ enet_wrapper <- function(data, job, instance, ...) {
     alpha = ap$alpha
   )
   
-  res <- process_results(output, pp$p, method = "enet", alpha = ap$alpha, instance$true_predictors)
+  res <- process_results(output, pp$p, method = "enet", alpha = ap$alpha, instance$true_predictors, pp$s)
   res$job.id <- job$job.id
   res
 }

@@ -1,4 +1,4 @@
-process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors) { 
+process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors, s = 10) { 
   
   if (method == 'enet' & is.null(alpha)) { 
     stop("alpha should be given when method is enet") 
@@ -10,7 +10,6 @@ process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors
   performance <- dplyr::tibble(
     method = method, 
     alpha = NA, 
-    beta_type = beta_type, 
     p = p, 
     s = s,
     k = 1:p,
