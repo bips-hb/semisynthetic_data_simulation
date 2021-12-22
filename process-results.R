@@ -29,11 +29,19 @@ process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors
   }
   
   if (method == 'fs') { 
+    
     k <- length(res$id)
     
     sapply(1:k, function(j) { 
       selected_predictors <- res$id[1:j] # all predictors up to j
       compute_performance_measures(selected_predictors, j)
+      
+      ### TODO remove
+      
+      print(selected_predictors)
+      print(true_predictors)
+      
+      ### TODO remove
     })
   }
   if (method == 'bs') { 
