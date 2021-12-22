@@ -33,33 +33,29 @@ plot_corrmat2 <- function(corrmat, xlabel = "", title = "", legend = FALSE, beta
   p
 }
 
-plot_results <- function(results, n = 1000, p = 100, s = 10, dimensionality = "low",
-                         corr_type = "independent", rho = 0, beta_type = "first", 
-                         snr = 0.05, 
+plot_results <- function(results, 
+                         corr_level = "high", 
+                         p = 1000, s = 10, n = 100, 
+                         snr = .42,
                          title = "", 
                          ylim = c(0, 1)) { 
   
   
-  
   ### get the data 
-  n_ = n; p_ = p; s_ = s; dimensionality_ = dimensionality;
-  corr_type_ = corr_type; rho_ = rho; beta_type_ = beta_type; 
-  snr_ = snr 
+  n_ = n; p_ = p; s_ = s; corr_level_ = corr_level;
+  snr_ = snr;
   
   results <- results %>% dplyr::filter(
     n == n_,
     p == p_,
     s == s_,
-    dimensionality == dimensionality_, 
-    corr_type == corr_type_,
-    rho == rho_,
-    beta_type == beta_type_,
+    corr_level == corr_level_,
     snr == snr_
   ) 
   
   p <- ggplot(results) +
-    geom_boxplot(aes(x = algorithm_label, y = F1), fill = "grey") +
-    scale_x_discrete(limits = c("hybrid", "e-net", "lasso", "forward stepwise", "best subset")) + 
+    geom_boxplot(aes(x = algorithm, y = F1), fill = "grey") +
+    scale_x_discrete(limits = c("enet", "lasso", "fs")) +  #,"best subset")) + 
     scale_y_continuous(limits = ylim, expand = c(0, 0)) +
     coord_flip() +
     xlab("") +

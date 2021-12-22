@@ -61,14 +61,16 @@ generate_semisynthetic_dataset <- function(p = 1000, s = 10,
   # strong correlation between the true predictors
   if (corr_level == 'high') { 
     # since it is symmetric we need only the upper triangle to find the highest correlations
-    corr_X[lower.tri(corr_X)] <- 0
+    tmp_corr_X <- corr_X
+    
+    tmp_corr_X[lower.tri(tmp_corr_X)] <- 0
     
     # set diag to zero since it contains 1s
-    diag(corr_X) <- 0
+    diag(tmp_corr_X) <- 0
     
     # find highest correlation and corresponding variables
     max_indices <- 
-      which(corr_X == max(corr_X), arr.ind = TRUE)
+      which(tmp_corr_X == max(tmp_corr_X), arr.ind = TRUE)
     
     # get the 9 other variables with the highest correlation with variable 1
     non_zero_indices <- 
