@@ -36,7 +36,7 @@ process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors
       compute_performance_measures(selected_predictors, j)
     })
   }
-  if (method == 'bs' || method == "enet_bs_hybrid") { 
+  if (method == 'bs') { 
     k <- length(res)
     sapply(1:k, function(j) { 
       selected_predictors <- res[[j]] # all predictors up to j
@@ -49,6 +49,13 @@ process_results <- function(res, p, method = 'fs', alpha = NULL, true_predictors
     
     sapply(1:p, function(j) { 
       selected_predictors <- res$id[1:j] # all predictors up to j
+      
+      ### TODO remove
+      
+      print(selected_predictors)
+      print(true_predictors)
+      
+      ### TODO remove
       compute_performance_measures(selected_predictors, j)
     })
   }

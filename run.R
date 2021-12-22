@@ -9,7 +9,7 @@ library(caret)
 options(batchtools.verbose = TRUE)
 options(stringsAsFactors = FALSE)
 
-test_run <- FALSE # if true only one replication is run  
+test_run <- TRUE # if true only one replication is run  
 
 ### packages and files to load
 packages = c("dplyr", "readr", "simsham", "bestsubset", "glmnet", "caret")
