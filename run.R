@@ -41,7 +41,7 @@ addProblem(name = "synthetic_sim", fun = simulator_wrapper, seed = 1)
 
 ### add algorithms 
 addAlgorithm(name = "fs", fun = fs_wrapper) 
-#addAlgorithm(name = "bs", fun = bs_wrapper) 
+addAlgorithm(name = "bs", fun = bs_wrapper) 
 addAlgorithm(name = "enet", fun = enet_wrapper) 
 
 ### add the experiments
@@ -51,7 +51,7 @@ prob_design <- list(synthetic_sim = sim_param)
 
 # parameters for the methods
 algo_design <- list(
-  #bs = expand.grid(k = 15),
+  bs = expand.grid(k = 15),
   fs = expand.grid(k = 15),
   enet = expand.grid(alpha = seq(.1, 1, by = .1))
 )
@@ -67,7 +67,7 @@ if (grepl("node\\d{2}|bipscluster", system("hostname", intern = TRUE))) {
   submitJobs(ids = ids, # walltime in seconds, 10 days max, memory in MB
              resources = list(name = reg_name, chunks.as.arrayjobs = TRUE,
                               memory = 80000, walltime = 10*24*3600,
-                              max.concurrent.jobs = 100))
+                              max.concurrent.jobs = 250))
 } else {
   submitJobs(ids = ids)
 }
