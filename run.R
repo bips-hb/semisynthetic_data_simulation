@@ -67,7 +67,7 @@ if (grepl("node\\d{2}|bipscluster", system("hostname", intern = TRUE))) {
   submitJobs(ids = ids, # walltime in seconds, 10 days max, memory in MB
              resources = list(name = reg_name, chunks.as.arrayjobs = TRUE,
                               memory = 80000, walltime = 10*24*3600,
-                              max.concurrent.jobs = 250))
+                              max.concurrent.jobs = 200))
 } else {
   submitJobs(ids = ids)
 }
