@@ -20,6 +20,7 @@ sim_param <- sim_param %>%
 
 for (i in 1:nrow(sim_param)) { 
   sp <- sim_param[i, ] 
+  print(sp)
    p <- plot_results(results, sp$corr_type, sp$p, sp$s, sp$n, sp$snr, 
                   title = "", 
                   ylim = c(0, 1))
