@@ -3,7 +3,6 @@
 .RData
 *.DS_Store*
 *.Rproj
-results*
 bestF1scores*
 best_f1*
 tcgaExpression.RData
